@@ -16,8 +16,7 @@ class SabianFileManager {
      * @param String $newName The new file name. If not specified, a default file name will be used (If specified, without the mimetype)
      * @param String $fileType The file type without the dot (Defaults to png)
      * @param String $link The drive link for the storage disk (Defaults to public)
-     * @return Array Key value pair of path and url
-     * @throws SabianException
+     * @return null|Array Key value pair of path and url
      */
     public static function getFileFromBase64($base64String, $folder = null, $newName = null, $fileType = "png", $link = "public") {
         if (is_null($base64String)) {
@@ -54,8 +53,7 @@ class SabianFileManager {
      * @param String $folder The folder where the image will be stored (Without trailing hash)
      * @param String $newName The new file name. If not specified, a default file name will be used (File name should be without the MimeType)
      * @param String $fileType The file type without the dot (Defaults to png)
-     * @return Array Key value pair of path and url
-     * @throws SabianException
+     * @return null|Array Key value pair of path and url
      */
     public static function getImageFromBase64($base64String, $folder = "images", $newName = null, $fileType = "png") {
         if (is_null($folder)) {
@@ -72,8 +70,7 @@ class SabianFileManager {
      * @param string $base64String
      * @param string $folder The folder where the audio will be stored(Without trailing hash)
      * @param string $newName The new name of the audio file
-     * @return Array Key value pair of path and url
-     * @throws SabianException
+     * @return nnull|Array Key value pair of path and url
      */
     public static function getAudioFromBase64($base64String, $folder = "audio", $newName = null) {
         if (is_null($folder)) {
