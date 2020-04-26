@@ -1,4 +1,4 @@
-# Sabian-File-Manager
+# Sabian File Manager
 A base64-file upload manager for Laravel. Converts Base64 and stores it as a file
 
 Example usage
