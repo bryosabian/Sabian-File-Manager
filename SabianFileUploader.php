@@ -4,7 +4,10 @@
  *
  * @author bryosabian
  */
-class SabianFileUploader {
+
+use Storage;
+
+class SabianFileManager {
 
     /**
      * Converts and stores the file from base 64
@@ -12,11 +15,11 @@ class SabianFileUploader {
      * @param String $folder The folder where the file will be stored (Without the trailing hash)
      * @param String $newName The new file name. If not specified, a default file name will be used (If specified, without the mimetype)
      * @param String $fileType The file type without the dot (Defaults to png)
-     * @param String $link The drive link for the storage disk (Defaults to public_uploads)
+     * @param String $link The drive link for the storage disk (Defaults to public)
      * @return Array Key value pair of path and url
      * @throws SabianException
      */
-    public static function getFileFromBase64($base64String, $folder = null, $newName = null, $fileType = "png", $link = "public_uploads") {
+    public static function getFileFromBase64($base64String, $folder = null, $newName = null, $fileType = "png", $link = "public") {
         if (is_null($base64String)) {
             return null;
         }
@@ -28,8 +31,8 @@ class SabianFileUploader {
         if (!is_null($newName)) {
             $newfile = implode(".", [$newName, $fileType]);
         } else {
-            $newfile = sprintf("%s_%s", time(), uniqid()); //time() . "_" . uniqid();
-            $newfile = sprintf("%s.%s", $newfile, $fileType); //$newfile . '.' . $fileType;
+            $newfile = sprintf("%s_%s", time(), uniqid());
+            $newfile = sprintf("%s.%s", $newfile, $fileType);
         }
         $bFile = $base64String;
         $bFile = str_replace('data:image/png;base64,', '', $bFile);
